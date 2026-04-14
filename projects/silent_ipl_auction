@@ -1,0 +1,155 @@
+import random
+
+# WICKETKEEPERS (15)
+wicketkeeper_ratings = [
+    ["Heinrich Klaasen", 4.9], ["Sanju Samson", 4.8], ["Rishabh Pant", 4.7],
+    ["Jos Buttler", 4.6], ["Ishan Kishan", 4.5], ["KL Rahul", 4.3],
+    ["Nicholas Pooran", 4.5], ["Quinton de Kock", 4.2], ["MS Dhoni", 4.0],
+    ["Abishek Porel", 3.8], ["Dhruv Jurel", 4.4], ["Jitesh Sharma", 3.7],
+    ["Phil Salt", 4.3], ["Kumar Kushagra", 3.5], ["Josh Inglis", 3.9]
+]
+
+# BATSMEN (20)
+batsman_ratings = [
+    ["Virat Kohli", 4.9], ["Yashasvi Jaiswal", 4.8], ["Shubman Gill", 4.7],
+    ["Suryakumar Yadav", 4.9], ["Rohit Sharma", 4.6], ["Travis Head", 4.8],
+    ["Ruturaj Gaikwad", 4.7], ["Rinku Singh", 4.5], ["Sai Sudharsan", 4.6],
+    ["Tristan Stubbs", 4.4], ["David Miller", 4.2], ["Shreyas Iyer", 4.3],
+    ["Sameer Rizvi", 4.1], ["Angkrish Raghuvanshi", 4.0], ["Prithvi Shaw", 3.6],
+    ["Rajat Patidar", 4.2], ["Harry Brook", 4.1], ["Abhishek Sharma", 4.3],
+    ["Sarfaraz Khan", 3.9], ["Pathum Nissanka", 3.8]
+]
+
+# ALL-ROUNDERS (20)
+allrounder_ratings = [
+    ["Hardik Pandya", 4.8], ["Ravindra Jadeja", 4.9], ["Axar Patel", 4.7],
+    ["Sunil Narine", 4.8], ["Marcus Stoinis", 4.5], ["Rashid Khan", 4.9],
+    ["Glenn Maxwell", 4.4], ["Cameron Green", 4.6], ["Sam Curran", 4.4],
+    ["Nitish Kumar Reddy", 4.2], ["Liam Livingstone", 4.3], ["Shivam Dube", 4.5],
+    ["Washington Sundar", 4.0], ["Mitchell Marsh", 4.1], ["Ramandeep Singh", 3.9],
+    ["Krunal Pandya", 4.1], ["Rahul Tewatia", 4.0], ["Shahbaz Ahmed", 3.8],
+    ["Andre Russell", 4.5], ["Jamie Overton", 4.0]
+]
+
+# BOWLERS (25)
+bowler_ratings = [
+    ["Jasprit Bumrah", 5.0], ["Kuldeep Yadav", 4.8], ["Mohammed Shami", 4.7],
+    ["Mitchell Starc", 4.6], ["Matheesha Pathirana", 4.7], ["Ravi Bishnoi", 4.5],
+    ["Yuzvendra Chahal", 4.6], ["Anshul Kamboj", 4.2], ["Prasidh Krishna", 4.3],
+    ["Mohammed Siraj", 4.4], ["T Natarajan", 4.5], ["Arshdeep Singh", 4.6],
+    ["Mayank Yadav", 4.4], ["Varun Chakaravarthy", 4.4], ["Noor Ahmad", 4.3],
+    ["Harshit Rana", 4.2], ["Trent Boult", 4.5], ["Kagiso Rabada", 4.4],
+    ["Pat Cummins", 4.6], ["Mohsin Khan", 4.1], ["Khaleel Ahmed", 4.0],
+    ["Avesh Khan", 3.9], ["Sandip Sharma", 4.1], ["Kartik Tyagi", 3.8], ["Jofra Archer", 4.2]
+]
+total = 100.0
+teams = {}
+no_of_teams = int(input("How many players are playing the silent auction : "))
+
+for i in range(no_of_teams):
+    n = input(f"Enter the name of player {i+1} : ")
+    teams[n] = [[],total]
+    
+print("Wicket-Keepers List : ")
+for i in wicketkeeper_ratings:
+    print(f"Name : {i[0]}     Rating : {i[1]}")
+
+print("Batsmen List : ")
+for i in batsman_ratings:
+    print(f"Name : {i[0]}     Rating : {i[1]}")
+
+print("Allrounders List : ")
+for i in allrounder_ratings:
+    print(f"Name : {i[0]}     Rating : {i[1]}")
+
+print("Bowlers List : ")
+for i in bowler_ratings:
+    print(f"Name : {i[0]}     Rating : {i[1]}")
+
+
+choice = "yes"
+while choice == "yes" :
+
+    # Creating a map to connect input letters to your nested lists
+    category_map = {
+    "W": wicketkeeper_ratings,
+    "B": batsman_ratings,
+    "A": allrounder_ratings,
+    "O": bowler_ratings
+    }
+
+    ch = input("Type W (Wicketkeeper), B (Batsman), A (Allrounder), O (Bowler): ").upper()
+
+    if ch in category_map:
+        # Select the list based on the user's choice
+        selected_list = category_map[ch]
+        
+        if not selected_list:
+            print("No players left in this category!")
+        else:
+            player = random.choice(selected_list)
+            max_bid = 0
+            winner = None
+
+            # Loop through teams using the numeric range you used
+            for t_name in teams:
+                print(f"\nTeam {t_name}'s Turn")
+                print(f"NAME : {player[0]}      RATING : {player[1]}")
+                bid = float(input(f"Enter your bid (Current Budget: ${teams[t_name][1]}): $"))
+                
+                if bid > max_bid:
+                    if bid <= teams[t_name][1]:
+                        max_bid = bid
+                        winner = t_name
+                    else:
+                        print("You don't have enough budget!")
+            
+                elif bid == max_bid and bid > 0:
+                    winner = None # Tie-breaker logic
+                
+                # Clear screen effect
+                print("\n" * 100) 
+
+            # Finalizing the Sale 
+            if winner:
+                teams[winner][0].append(player)
+                teams[winner][1] -= max_bid
+                print(f"SOLD! {player[0]} goes to Team {winner}")
+                selected_list.remove(player) # Removes from correct category list
+                
+            elif max_bid > 0 and winner is None:
+                print(f"Two coinciding bids! {player[0]} goes back into the pool.")
+                # Note: We do NOT remove the player here so they can appear again
+                
+            else:
+                print(f"No valid bids. {player[0]} remains unsold.")
+                selected_list.remove(player) # Remove so they don't keep reappearing
+    else:
+        print("Invalid category choice!")
+
+    choice = input("Do you want to continue the auction 'yes' or 'no' : ").lower()
+
+print("\n--- FINAL AUCTION RESULTS ---")
+
+highest_stars = 0
+winning_team_name = ""
+
+for t_idx in teams:
+    roster = teams[t_idx][0]
+    current_team_stars = 0
+    
+    # Calculate total stars for this team
+    for p in roster:
+        current_team_stars += p[1] # p[1] is the float rating (e.g., 4.9)
+    
+    print(f"Team {t_idx}: {len(roster)} Players | Total Stars: {current_team_stars:.1f}")
+    
+    # Check if this team has the most stars
+    if current_team_stars > highest_stars:
+        highest_stars = current_team_stars
+        winning_team_name = t_idx
+
+print("-" * 30)
+print(f"THE WINNER IS TEAM {winning_team_name} with {highest_stars} Stars!")
+
+    

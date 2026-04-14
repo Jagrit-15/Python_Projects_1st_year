@@ -1,0 +1,5 @@
+amt = float(input("What is the total bill : $"))
+tip = int(input("What is the tip percentage you want to give : "))
+total = amt + (amt*tip/100)
+people = int(input("Number of people : "))
+print(f"Amount to be paid by each person : ${round((total/people),2)}")

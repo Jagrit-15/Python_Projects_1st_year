@@ -52,4 +52,8 @@ while not game_over:
         speed = 0.06
     elif score.score == 30:
         speed = 0.05
+    elif score.score == 35:
+        speed = 0.04
+
+        
 screen.exitonclick()

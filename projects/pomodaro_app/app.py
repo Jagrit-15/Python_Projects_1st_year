@@ -1,6 +1,7 @@
 from tkinter import *
 import math
 
+# STORING CONSTANTS AND GLOBAL VARIABLES
 PINK = "#e2979c"
 RED = "#e7305b"
 GREEN = "#9bdeac"
@@ -12,9 +13,11 @@ LONG_BREAK_MIN = 0.15
 reps = 0
 timer = None
 
+# METHOD USED AS THE TIMER
 def count_down(count):
     global timer
     
+    # PRINTING THE TIME LEFT ACCORDINGLY
     if count/60 <10 and count%60 < 10:
         canvas.itemconfig(timer_count , text = f"0{int(count/60)}:0{int(count%60)}")
     elif count/60 >=10 and count%60 < 10:
@@ -24,6 +27,7 @@ def count_down(count):
     elif count/60 >=10 and count%60 >= 10:
         canvas.itemconfig(timer_count , text = f"{int(count/60)}:{int(count%60)}")
 
+    # PRINTING TIME UPTO 0 AND CALLING THE FUNCTION AGAIN
     if count>0 :
        timer = window.after(1000 ,count_down ,count-1)
     else:
@@ -33,7 +37,8 @@ def count_down(count):
         for _ in range(work_sessions):
             marks+="✔"
         check_mark.config(text=marks)
-        
+
+# RESETING THE INTERFACE OF THE APP        
 def reset_timer():
     global reps
     reps=0
@@ -42,29 +47,30 @@ def reset_timer():
     window.after_cancel(timer)
     canvas.itemconfig(timer_count , text ="25:00")
 
-
+# STARTING THE TIMER 
 def start_timer():
-    global reps
+    global reps # CALCULATING REPS TO START THE TIMER ACCORDINGLY
     reps +=1
     work_time = WORK_MIN * 60
     short_brk_time = SHORT_BREAK_MIN * 60
     long_brk_time = LONG_BREAK_MIN * 60
 
-    if(reps % 8 == 0):
+    if(reps % 8 == 0): # AFTER 4 WORK SESSIONS
         count_down(long_brk_time)
         label1.config(text="Break" , fg=RED)
-    elif(reps % 2 == 0):
+    elif(reps % 2 == 0): # AFTER A WORK SESSION
         count_down(short_brk_time)
         label1.config(text="Break" , fg=PINK)
-    else:
+    else: # WORK SESSION
         count_down(work_time)
         label1.config(text="Work" , fg=GREEN)
     
 
 window = Tk()
-window.title("Pomodaro")
+window.title("Pomodaro App")
 window.config(padx=100 , pady=100 , bg=YELLOW)
 
+# IMPRTING IMAGE IN THE CANVAS 
 canvas = Canvas(width=202, height=224 , bg=YELLOW , highlightthickness=0)
 tomato_img = PhotoImage(file=r"projects\pomodaro_app\tomato.png")
 canvas.create_image(102,112,image=tomato_img)

@@ -4,8 +4,8 @@
         {
             "type": "boolean",
             "difficulty": "easy",
-            "category": "Animals",
-            "question": "Rabbits can see what&#039;s behind themselves without turning their heads.",
+            "category": "Geography",
+            "question": "Nova Scotia is on the east coast of Canada.",
             "correct_answer": "True",
             "incorrect_answers": [
                 "False"
@@ -14,28 +14,8 @@
         {
             "type": "boolean",
             "difficulty": "easy",
-            "category": "Animals",
-            "question": "Elephants are physically unable to jump.",
-            "correct_answer": "True",
-            "incorrect_answers": [
-                "False"
-            ]
-        },
-        {
-            "type": "boolean",
-            "difficulty": "easy",
-            "category": "Animals",
-            "question": "A bear does NOT defecate during hibernation. ",
-            "correct_answer": "True",
-            "incorrect_answers": [
-                "False"
-            ]
-        },
-        {
-            "type": "boolean",
-            "difficulty": "easy",
-            "category": "Animals",
-            "question": "Rabbits are rodents.",
+            "category": "Geography",
+            "question": "There is a city called Rome in every continent on Earth.",
             "correct_answer": "False",
             "incorrect_answers": [
                 "True"
@@ -44,8 +24,8 @@
         {
             "type": "boolean",
             "difficulty": "easy",
-            "category": "Animals",
-            "question": "Zebras are white with black stripes.",
+            "category": "Geography",
+            "question": "Bosnia and Herzegovina is a country located in the Baltic region in Europe.",
             "correct_answer": "False",
             "incorrect_answers": [
                 "True"
@@ -54,18 +34,8 @@
         {
             "type": "boolean",
             "difficulty": "easy",
-            "category": "Animals",
-            "question": "The internet browser Firefox is named after the Red Panda.",
-            "correct_answer": "True",
-            "incorrect_answers": [
-                "False"
-            ]
-        },
-        {
-            "type": "boolean",
-            "difficulty": "easy",
-            "category": "Animals",
-            "question": "Kangaroos keep food in their pouches next to their children.",
+            "category": "Geography",
+            "question": "St. Louis is the capital of the US State Missouri.",
             "correct_answer": "False",
             "incorrect_answers": [
                 "True"
@@ -74,8 +44,8 @@
         {
             "type": "boolean",
             "difficulty": "easy",
-            "category": "Animals",
-            "question": "Cats have whiskers under their legs.",
+            "category": "Geography",
+            "question": "Alaska is the largest state in the United States.",
             "correct_answer": "True",
             "incorrect_answers": [
                 "False"
@@ -84,8 +54,18 @@
         {
             "type": "boolean",
             "difficulty": "easy",
-            "category": "Animals",
-            "question": "The Killer Whale is considered a type of dolphin.",
+            "category": "Geography",
+            "question": "Greenland is covered with grass and Iceland covered with ice.",
+            "correct_answer": "False",
+            "incorrect_answers": [
+                "True"
+            ]
+        },
+        {
+            "type": "boolean",
+            "difficulty": "easy",
+            "category": "Geography",
+            "question": "Rhode Island is actually located on the US mainland, despite its name.",
             "correct_answer": "True",
             "incorrect_answers": [
                 "False"
@@ -94,11 +74,31 @@
         {
             "type": "boolean",
             "difficulty": "easy",
-            "category": "Animals",
-            "question": "Rabbits can&#039;t vomit.",
-            "correct_answer": "True",
+            "category": "Geography",
+            "question": "Miami is Florida&#039;s largest city.",
+            "correct_answer": "False",
             "incorrect_answers": [
-                "False"
+                "True"
+            ]
+        },
+        {
+            "type": "boolean",
+            "difficulty": "easy",
+            "category": "Geography",
+            "question": "San Marino is the only country completely surrounded by another country.",
+            "correct_answer": "False",
+            "incorrect_answers": [
+                "True"
+            ]
+        },
+        {
+            "type": "boolean",
+            "difficulty": "easy",
+            "category": "Geography",
+            "question": "The Republic of Malta is the smallest microstate worldwide.",
+            "correct_answer": "False",
+            "incorrect_answers": [
+                "True"
             ]
         }
     ]

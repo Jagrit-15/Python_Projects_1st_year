@@ -1,6 +1,7 @@
 import requests
 import json
 from tkinter import *
+import html
 
 score = 0
 question_number = 1
@@ -51,7 +52,7 @@ def get_next_question():
     question_number+=1
     if question_number <=10:
         canvas.config(bg="white")
-        canvas.itemconfig(question , text = response.json()["results"][question_number-1]["question"])
+        canvas.itemconfig(question , text = html.unescape(response.json()["results"][question_number-1]["question"]))
     else:
         canvas.config(bg="white")
         canvas.itemconfig(question , text = f"YOUR SCORE : {score}/10")
@@ -65,7 +66,7 @@ window.title("Quiz")
 window.config(padx=20 , pady=20 ,bg="black")
 
 canvas = Canvas(width=400 , height=400)
-question = canvas.create_text(200 , 200 ,text=response.json()["results"][0]["question"] , font = ("Courier New" , 24 , "bold"), justify="left" , width=400 , anchor="center")
+question = canvas.create_text(200 , 200 ,text=html.unescape(response.json()["results"][0]["question"]) , font = ("Courier New" , 24 , "bold"), justify="left" , width=400 , anchor="center")
 canvas.grid(row=0 , column=0 , columnspan=3 , pady=(0,10))
 score_text = canvas.create_text(360 , 10 , text="Score : 0" , font=("arial" , 10 , "bold"))
 
